@@ -22,16 +22,19 @@ const hashImages = true;
 
 const layerConfigurations = [
   {
-    growEditionSizeTo: 11,
+    growEditionSizeTo: 8888,
     // namePrefix: "Monkey", Use to add a name to Metadata `name:`
     layersOrder: [
-      { name: "Back Accessory" },
-      { name: "Head" },
-      { name: "Clothes" },
-      { name: "Eyes" },
-      { name: "Hair" },
-      { name: "Head Accessory" },
-      { name: "Shirt Accessories" },
+      { name: "01_Backgrounds" },
+      { name: "02_Skins" },
+      { name: "03_Eyes" },
+      { name: "04_Eyebrow" },
+      { name: "05_Mouth" },
+      { name: "06_Eyewear" },
+      { name: "07_Ear" },
+      { name: "08_Forehead" },
+      { name: "09_Head" },
+      { name: "10_Necklace" },
     ],
   },
   // {
@@ -54,9 +57,42 @@ const layerConfigurations = [
  * accidentally set incompatibilities for the _wrong_ item.
  */
 const incompatible = {
-  //   Red: ["Dark Long"],
-  //   // directory incompatible with directory example
-  //   White: ["rare-Pink-Pompadour"],
+
+  /*Mouth to head incompats*/ 
+  Mask : ["Astronault","Crash-Helmet", "Ninja-Mask", "Halloween"],
+  Weed : ["Astronault","Crash-Helmet", "Ninja-Mask", "Halloween"],
+  "Party-Horn" : ["Astronault","Crash-Helmet", "Ninja-Mask", "Halloween"],
+
+
+  /*Eye to Eyewear incompats*/ 
+  Cyborg : ["Aviator", "Cyberpunk", "Cyclops","Pirate","Pit-Vipers","Plain", "Sol-Glasses","Sunglasses","Thug-Life","vR","Wayfarer"],
+
+/*Eyewear to head incompats*/ 
+  Aviator: ["Astronault","Crash-Helmet", "Ninja-Mask", "Halloween"],
+  Cyberpunk: ["Astronault","Crash-Helmet", "Ninja-Mask", "Halloween"],
+  Cyclops: ["Astronault","Crash-Helmet", "Ninja-Mask", "Halloween"],
+  Pirate: ["Astronault","Crash-Helmet", "Ninja-Mask", "Halloween"],
+  "Pit-Vipers": ["Astronault","Crash-Helmet", "Ninja-Mask", "Halloween"],
+  Plain: ["Astronault","Crash-Helmet", "Ninja-Mask", "Halloween"],
+  "Sol-Glasses": ["Astronault","Crash-Helmet", "Ninja-Mask", "Halloween"],
+  Sunglasses: ["Astronault","Crash-Helmet", "Ninja-Mask", "Halloween"],
+  "Thug-Life": ["Astronault","Crash-Helmet", "Ninja-Mask", "Halloween"],
+  vR: ["Astronault","Crash-Helmet", "Ninja-Mask", "Halloween", "Mohawk-Titanium", "Mohawk", "Tatto", "Party-Hat"],
+    Wayfarer: ["Astronault","Crash-Helmet", "Ninja-Mask", "Halloween"],
+  
+  /*Earring to head incompats*/ 
+  "Cross-Gold" : ["Ninja-Mask"],
+  Cross : ["Ninja-Mask"],
+  "Diamond-Stud" : ["Ninja-Mask"],
+  Earpods : ["Ninja-Mask"],
+  "Gold-Stud" : ["Ninja-Mask"],
+  Hoops : ["Ninja-Mask"],
+  Plain : ["Ninja-Mask"],
+  "Silver-Stud" : ["Ninja-Mask"],
+  Silver : ["Ninja-Mask"],
+  "Solana-Stud" : ["Ninja-Mask"],
+
+
 };
 
 /**
@@ -87,8 +123,8 @@ const traitValueOverrides = {
 const debugLogs = true;
 
 const format = {
-  width: 512,
-  height: 512,
+  width: 500,
+  height: 551,
 };
 
 const background = {
