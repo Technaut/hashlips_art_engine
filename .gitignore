@@ -49,7 +49,7 @@ bower_components
 build/Release
 
 # Dependency directories
-
+layers/
 build/
 dist/
 node_modules/

@@ -22,31 +22,85 @@ const hashImages = true;
 
 const layerConfigurations = [
   {
-    growEditionSizeTo: 8888,
+    growEditionSizeTo: 100,
     // namePrefix: "Monkey", Use to add a name to Metadata `name:`
     layersOrder: [
       { name: "01_Backgrounds" },
       { name: "02_Skins" },
-      { name: "03_Eyes" },
       { name: "04_Eyebrow" },
       { name: "05_Mouth" },
-      { name: "06_Eyewear" },
-      { name: "07_Ear" },
-      { name: "08_Forehead" },
-      { name: "09_Head" },
       { name: "10_Necklace" },
+      { name: "07_ear" },
+      { name: "09_Head_Laser",
+        sublayerOptions:{
+          "09_Head_Laser" : { trait : "09_Head"},
+      },
+    },
+      { name: "03_Eyes_Laser",
+      sublayerOptions:{
+        "03_Eyes_Laser" : { trait : "03_Eyes"},
+    
+    },
+  },
+      
+ 
     ],
   },
-  // {
-  //   growEditionSizeTo: 10,
-  //   namePrefix: "Lion",
-  //   resetNameIndex: true, // this will start the Lion count at #1 instead of #6
-  //   layersOrder: [
-  //     { name: "Background" },
-  //     { name: "Hats" },
-  //     { name: "Male Hair" },
-  //   ],
-  // },
+
+
+  //going to take the helmets ou of this batch
+  {
+    growEditionSizeTo: 200,
+    // namePrefix: "Monkey", Use to add a name to Metadata `name:`
+    layersOrder: [
+      { name: "01_Backgrounds" },
+      { name: "02_Skins" },
+      { name: "04_Eyebrow" },
+      { name: "05_Mouth" },
+      { name: "03_Eyes_Normal",
+      sublayerOptions:{
+        "03_Eyes_Normal" : { trait : "03_Eyes"},
+    },
+  },
+      { name: "06_EyeWear" },
+      { name: "10_Necklace" },
+      { name: "07_ear" },
+      { name: "09_Head_No_Eyewear",
+      sublayerOptions:{
+        "09_Head_No_Eyewear" : { trait : "09_Head"},
+    },
+  },
+      
+    ],
+  },
+
+    //no lasers, no eyewear and helmet heads
+    {
+      growEditionSizeTo: 300,
+      // namePrefix: "Monkey", Use to add a name to Metadata `name:`
+      layersOrder: [
+        { name: "01_Backgrounds" },
+        { name: "02_Skins" },
+        { name: "04_Eyebrow" },
+        { name: "05_Mouth" },
+        { name: "03_Eyes_Normal",
+        sublayerOptions:{
+          "03_Eyes_Normal" : { trait : "03_Eyes"},
+      },
+    },
+        
+        /*{ name: "06_EyeWear" },*/
+        { name: "10_Necklace" },
+        { name: "07_ear" },
+        { name: "09_Head_Covered",
+        sublayerOptions:{
+          "09_Head_Covered" : { trait : "09_Head"},
+      },
+    },
+        
+      ],
+    },
+
 ];
 
 /**
@@ -58,41 +112,28 @@ const layerConfigurations = [
  */
 const incompatible = {
 
-  /*Mouth to head incompats*/ 
-  Mask : ["Astronault","Crash-Helmet", "Ninja-Mask", "Halloween"],
-  Weed : ["Astronault","Crash-Helmet", "Ninja-Mask", "Halloween"],
-  "Party-Horn" : ["Astronault","Crash-Helmet", "Ninja-Mask", "Halloween"],
 
+  /*Earring to head incompats*/
+    "Cross-gold" : ["Ninja_Mask","Turban","HeadSet","Work_Headset"],
+    Cross : ["Ninja_Mask","Turban","HeadSet","Work_Headset"],
+    "Diamond_Stud" : ["Ninja_Mask","Turban","HeadSet","Work_Headset"],
+    Earpods :["Ninja_Mask","Turban","HeadSet","Work_Headset"],
+    "Gold_Stud" :["Ninja_Mask","Turban","HeadSet","Work_Headset"],
+    Hoops : ["Ninja_Mask","Turban","HeadSet","Work_Headset"],
+    /*Plain : ["Ninja_Mask"],*/
+    "Silver_Stud" : ["Ninja_Mask","Turban","HeadSet","Work_Headset"],
+    Silver : ["Ninja_Mask","Turban","HeadSet","Work_Headset"],
+    "Solana_Stud" : ["Ninja_Mask","Turban","HeadSet","Work_Headset"],
 
-  /*Eye to Eyewear incompats*/ 
-  Cyborg : ["Aviator", "Cyberpunk", "Cyclops","Pirate","Pit-Vipers","Plain", "Sol-Glasses","Sunglasses","Thug-Life","vR","Wayfarer"],
-
-/*Eyewear to head incompats*/ 
-  Aviator: ["Astronault","Crash-Helmet", "Ninja-Mask", "Halloween"],
-  Cyberpunk: ["Astronault","Crash-Helmet", "Ninja-Mask", "Halloween"],
-  Cyclops: ["Astronault","Crash-Helmet", "Ninja-Mask", "Halloween"],
-  Pirate: ["Astronault","Crash-Helmet", "Ninja-Mask", "Halloween"],
-  "Pit-Vipers": ["Astronault","Crash-Helmet", "Ninja-Mask", "Halloween"],
-  Plain: ["Astronault","Crash-Helmet", "Ninja-Mask", "Halloween"],
-  "Sol-Glasses": ["Astronault","Crash-Helmet", "Ninja-Mask", "Halloween"],
-  Sunglasses: ["Astronault","Crash-Helmet", "Ninja-Mask", "Halloween"],
-  "Thug-Life": ["Astronault","Crash-Helmet", "Ninja-Mask", "Halloween"],
-  vR: ["Astronault","Crash-Helmet", "Ninja-Mask", "Halloween", "Mohawk-Titanium", "Mohawk", "Tatto", "Party-Hat"],
-    Wayfarer: ["Astronault","Crash-Helmet", "Ninja-Mask", "Halloween"],
+  /*Eye to Eyewear incompats */
+  Cyborg : ["Aviator", "Cyberpunk", "Cyclops","Pirate","Pit-Vipers","Plain", "Solana","Sunglasses","Thug_Life","vR","Wayfarer"],
   
-  /*Earring to head incompats*/ 
-  "Cross-Gold" : ["Ninja-Mask"],
-  Cross : ["Ninja-Mask"],
-  "Diamond-Stud" : ["Ninja-Mask"],
-  Earpods : ["Ninja-Mask"],
-  "Gold-Stud" : ["Ninja-Mask"],
-  Hoops : ["Ninja-Mask"],
-  Plain : ["Ninja-Mask"],
-  "Silver-Stud" : ["Ninja-Mask"],
-  Silver : ["Ninja-Mask"],
-  "Solana-Stud" : ["Ninja-Mask"],
+  //mouth incompats
+  "Angry_Eyebrows" : ["Smiling"], 
+  "Mad" : ["Smiling"], 
 
-
+  
+  
 };
 
 /**
@@ -105,7 +146,13 @@ const incompatible = {
  * further in the stack
  */
 const forcedCombinations = {
-  floral: ["MetallicShades", "Golden Sakura"],
+
+  "Bored_Eyebrows" : ["Bored_Mouth","Bored"],
+  "Surprised_Eyebrows" : ["Surprised_Mouth","Surprise"],
+  "Sad_Eyebrows" : ["Sad"],
+  "Angry_Eyebrows" : ["Angry"],
+  "Mad" : ["Angry"],
+  "Hypnotised_Eyebrows" : ["Hypnotised"]
 };
 
 const shuffleLayerConfigurations = false;
