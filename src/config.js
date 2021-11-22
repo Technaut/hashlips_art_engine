@@ -1,5 +1,6 @@
 "use strict";
 
+const { resolveObjectURL } = require("buffer");
 const path = require("path");
 const isLocal = typeof process.pkg === "undefined";
 const basePath = isLocal ? process.cwd() : path.dirname(process.execPath);
@@ -21,16 +22,17 @@ const emptyLayerName = "NONE";
 const hashImages = true;
 
 const layerConfigurations = [
+  
+  //laser eye batch
   {
-    growEditionSizeTo: 100,
-    // namePrefix: "Monkey", Use to add a name to Metadata `name:`
-    layersOrder: [
+    growEditionSizeTo: 5,
+      layersOrder: [
       { name: "01_Backgrounds" },
       { name: "02_Skins" },
       { name: "04_Eyebrow" },
       { name: "05_Mouth" },
       { name: "10_Necklace" },
-      { name: "07_ear" },
+      { name: "07_Ear" },
       { name: "09_Head_Laser",
         sublayerOptions:{
           "09_Head_Laser" : { trait : "09_Head"},
@@ -48,23 +50,24 @@ const layerConfigurations = [
   },
 
 
-  //going to take the helmets ou of this batch
+  //No Astronaut and Crash helmet batch
   {
-    growEditionSizeTo: 200,
-    // namePrefix: "Monkey", Use to add a name to Metadata `name:`
-    layersOrder: [
+    growEditionSizeTo: 1000,
+     layersOrder: [
       { name: "01_Backgrounds" },
       { name: "02_Skins" },
       { name: "04_Eyebrow" },
-      { name: "05_Mouth" },
+
       { name: "03_Eyes_Normal",
       sublayerOptions:{
         "03_Eyes_Normal" : { trait : "03_Eyes"},
     },
   },
-      { name: "06_EyeWear" },
+      { name: "05_Mouth" },
+       { name: "06_EyeWear" },
+
       { name: "10_Necklace" },
-      { name: "07_ear" },
+      { name: "07_Ear" },
       { name: "09_Head_No_Eyewear",
       sublayerOptions:{
         "09_Head_No_Eyewear" : { trait : "09_Head"},
@@ -74,15 +77,19 @@ const layerConfigurations = [
     ],
   },
 
-    //no lasers, no eyewear and helmet heads
+    //no lasers, no eyewear and helmet heads. need a mouth layer for this one
     {
-      growEditionSizeTo: 300,
+      growEditionSizeTo: 1010,
       // namePrefix: "Monkey", Use to add a name to Metadata `name:`
       layersOrder: [
         { name: "01_Backgrounds" },
         { name: "02_Skins" },
         { name: "04_Eyebrow" },
-        { name: "05_Mouth" },
+        { name: "05_Mouth_No_Sticks",
+        sublayerOptions:{
+          "05_Mouth_No_Sticks" : { trait : "05_Mouth"},
+      },
+    },
         { name: "03_Eyes_Normal",
         sublayerOptions:{
           "03_Eyes_Normal" : { trait : "03_Eyes"},
@@ -91,7 +98,7 @@ const layerConfigurations = [
         
         /*{ name: "06_EyeWear" },*/
         { name: "10_Necklace" },
-        { name: "07_ear" },
+        { name: "07_Ear" },
         { name: "09_Head_Covered",
         sublayerOptions:{
           "09_Head_Covered" : { trait : "09_Head"},
@@ -114,7 +121,7 @@ const incompatible = {
 
 
   /*Earring to head incompats*/
-    "Cross-gold" : ["Ninja_Mask","Turban","HeadSet","Work_Headset"],
+    "Cross_gold" : ["Ninja_Mask","Turban","HeadSet","Work_Headset"],
     Cross : ["Ninja_Mask","Turban","HeadSet","Work_Headset"],
     "Diamond_Stud" : ["Ninja_Mask","Turban","HeadSet","Work_Headset"],
     Earpods :["Ninja_Mask","Turban","HeadSet","Work_Headset"],
@@ -125,14 +132,27 @@ const incompatible = {
     Silver : ["Ninja_Mask","Turban","HeadSet","Work_Headset"],
     "Solana_Stud" : ["Ninja_Mask","Turban","HeadSet","Work_Headset"],
 
+    Mask : ["Ninja_Mask"],
   /*Eye to Eyewear incompats */
   Cyborg : ["Aviator", "Cyberpunk", "Cyclops","Pirate","Pit-Vipers","Plain", "Solana","Sunglasses","Thug_Life","vR","Wayfarer"],
   
   //mouth incompats
-  "Angry_Eyebrows" : ["Smiling"], 
-  "Mad" : ["Smiling"], 
+  "Angry_Eyebrows" : ["Smiling", "Titanium_Side", "Diamond_Side", "Smiling_Mouth", "Titanium", "Diamond", "Rainbow_side", "Rainbow", "Gold-Side", "Gold-Teeth"],
+  Mad  : ["Smiling", "Titanium_Side", "Diamond_Side", "Smiling_Mouth", "Titanium", "Diamond", "Rainbow_side", "Rainbow"],
+  "Sad_Eyebrows"  : ["Smiling", "Titanium_Side", "Diamond_Side", "Smiling_Mouth", "Titanium", "Diamond", "Rainbow_side", "Rainbow"],
+  Beard: ["Halloween"],
+  "Bored_Mouth": ["Halloween"],
+  "Surprised_Mouth": ["Halloween"],
 
   
+  VR : ["Earpods"],
+
+  Robot  : ["Tatto"],
+  Titanium : ["Tatto"],
+
+Weed : ["Cyberpunk"],
+Party_Horn : ["Cyberpunk"],
+  //mouth incompats
   
 };
 
@@ -149,13 +169,14 @@ const forcedCombinations = {
 
   "Bored_Eyebrows" : ["Bored_Mouth","Bored"],
   "Surprised_Eyebrows" : ["Surprised_Mouth","Surprise"],
-  "Sad_Eyebrows" : ["Sad"],
+  "Sad_Eyebrows" : ["Sad", "Sad_Mouth"],
   "Angry_Eyebrows" : ["Angry"],
   "Mad" : ["Angry"],
   "Hypnotised_Eyebrows" : ["Hypnotised"]
+
 };
 
-const shuffleLayerConfigurations = false;
+const shuffleLayerConfigurations = true;
 
 /**
  * In the event that a filename cannot be the trait value name, for example when

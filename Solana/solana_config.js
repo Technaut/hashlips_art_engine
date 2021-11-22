@@ -11,15 +11,15 @@
  * Metaplex.js util by https://github.com/DawidAbram
  */
 
-const collectionName = "PROJECT_NAME";
-const collectionFamily = "PROJECT_FAMILY"; // Many projects can belong to one family
-const symbol = "PRJSMBL";
+const collectionName = "Monks on Solana";
+const collectionFamily = "Generation 1"; // Many projects can belong to one family
+const symbol = "MONKSOL";
 
 const baseUriPrefix = ""; // OPTIONAL, if you need to prefix your image#.png with a baseURI
-const description = "Default Solana Description";
-const external_url = ""; // add optional external URL here, e.g, https://0n10nDivision.com
+const description = "Monks on Solana have their own corner of the metaverse that prying eyes are kept away from; you can still degen here, no paperhanded shit allowed.";
+const external_url = "https://monksonsolana.com"; // add optional external URL here, e.g, https://0n10nDivision.com
 
-const royaltyFee = 200; // This is 2% royalty fee
+const royaltyFee = 500; // This is 2% royalty fee
 
 /**
  * Array of Creators.
@@ -27,7 +27,7 @@ const royaltyFee = 200; // This is 2% royalty fee
  */
 const creators = [
   {
-    address: "WALLET_ADDRESS", // Wallet address for royalties
+    address: "8nVfVQbq1oba6A6gKW569gwAkkgsBCi1erYzRJNqYmaL", // Wallet address for royalties
     share: 100, // Amount of shares for this wallet, can be more than one, all have to add up to 100 together
   },
   // uncomment and edit for additional creator.
