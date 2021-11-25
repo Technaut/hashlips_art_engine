@@ -51,6 +51,7 @@ build/Release
 # Dependency directories
 layers/
 layers_original/
+layers_original_master/
 build/
 dist/
 node_modules/
